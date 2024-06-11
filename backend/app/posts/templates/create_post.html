@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Create Post
+{% endblock %}
+
+{% block content %}
+  <h2>Create Post</h2>
+  {% include 'form_snippets.html' with form=form %}
+{% endblock %}

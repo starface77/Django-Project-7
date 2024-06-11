@@ -1,0 +1,52 @@
+{% load static %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles/navbar.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/resets.css' %}" />
+    <link rel="shortcut icon" href="{% static 'favicon.jpg' %}" type="image/x-icon">
+    <title>
+      {% block title %}
+
+      {% endblock %}
+    </title>
+
+    {% block css %}
+
+    {% endblock %}
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+
+    <div class="container mt-3" id="messages">
+      {% bootstrap_messages %}
+    </div>
+
+    <main class="main-content-wrapper">
+      {% block content %}
+
+      {% endblock %}
+    </main>
+
+    {% include 'footer.html' %}
+
+    {% block scripts %}
+
+    {% endblock %}
+
+    <script>
+      setTimeout(function () {
+        var messages = document.querySelectorAll('#messages')
+        messages.forEach(function (message) {
+          message.remove()
+        })
+      }, 5000)
+    </script>
+  </body>
+</html>
